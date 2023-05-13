@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Byndyusoft
+ * Copyright 2023 KillWolfVlad
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,8 +14,17 @@
  * limitations under the License.
  */
 
-export class HelloWorldService {
-  public getHelloWorldMessage(): string {
-    return "Hello World!";
-  }
-}
+import dayjs from "dayjs";
+import timezone from "dayjs/plugin/timezone";
+import utc from "dayjs/plugin/utc";
+
+import { config } from "./config";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+export const initDayjs = async (): Promise<void> => {
+  await import(`dayjs/locale/${config.botLocale}.js`);
+
+  dayjs.locale(config.botLocale);
+};

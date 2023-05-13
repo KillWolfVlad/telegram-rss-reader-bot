@@ -5,5 +5,15 @@ on:
   - pull_request
 
 jobs:
-  test:
-    uses: Byndyusoft/node-reusable-workflows/.github/workflows/test.yaml@master
+  ##############################################################################
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: Byndyusoft/node-reusable-workflows/.github/actions/install@master
+        with:
+          node-version: lts/*
+
+      - run: yarn run build
+
+      - run: yarn run lint

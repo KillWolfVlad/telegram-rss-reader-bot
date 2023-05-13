@@ -1,29 +1,23 @@
 {
-  "name": "@byndyusoft/typescript-template",
+  "name": "telegram-rss-reader-bot",
   "version": "0.0.0-development",
-  "description": "Base template for TypeScript packages",
-  "homepage": "https://github.com/Byndyusoft/node-typescript-template#readme",
+  "private": true,
+  "description": "Telegram RSS Reader Bot",
+  "homepage": "https://github.com/KillWolfVlad/telegram-rss-reader-bot#readme",
   "bugs": {
-    "url": "https://github.com/Byndyusoft/node-typescript-template/issues"
+    "url": "https://github.com/KillWolfVlad/telegram-rss-reader-bot/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Byndyusoft/node-typescript-template.git"
+    "url": "https://github.com/KillWolfVlad/telegram-rss-reader-bot.git"
   },
   "license": "Apache-2.0",
-  "author": "Byndyusoft",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist",
-    "src",
-    "!dist/*.tsbuildinfo"
-  ],
+  "author": "KillWolfVlad",
   "scripts": {
     "prebuild": "shx rm -rf ./dist",
     "build": "yarn run prebuild && yarn run build:src",
     "build:src": "tsc --project ./tsconfig.build.json",
-    "postinstall": "husky install",
+    "postinstall": "(husky install) || true",
     "lint": "yarn run lint:eslint && yarn run lint:markdown && yarn run lint:prettier",
     "lint:eslint": "eslint --ignore-path ./.gitignore --max-warnings 0 --ext .ts,.js .",
     "lint:eslint:fix": "eslint --ignore-path ./.gitignore --fix --ext .ts,.js .",
@@ -32,67 +26,52 @@
     "lint:markdown:fix": "markdownlint --ignore-path ./.gitignore --fix \"./**/*.md\"",
     "lint:prettier": "prettier --ignore-path ./.gitignore --check \"./**/*.{ts,js,json,yaml,yml,md}\"",
     "lint:prettier:fix": "prettier --ignore-path ./.gitignore --write \"./**/*.{ts,js,json,yaml,yml,md}\"",
-    "prepublishOnly": "pinst --disable",
-    "postpublish": "pinst --enable",
-    "test": "jest",
-    "test:cov": "jest --coverage"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "./src/**/*.ts",
-      "!**/index.ts"
-    ],
-    "coverageDirectory": "<rootDir>/coverage",
-    "coverageReporters": [
-      "lcov",
-      "text"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "js"
-    ],
-    "resetMocks": true,
-    "roots": [
-      "<rootDir>/test"
-    ],
-    "setupFilesAfterEnv": [
-      "jest-extended/all"
-    ],
-    "testEnvironment": "node",
-    "testRegex": ".*\\.test\\.ts$",
-    "transform": {
-      "^.+\\.ts$": "ts-jest"
-    }
+    "start": "yarn run build:src && yarn node -r dotenv/config ./dist/main.js",
+    "start:prod": "yarn node ./dist/main.js"
   },
   "dependencies": {
-    "tslib": "^2.4.0"
+    "@byndyusoft/pino-logger-factory": "3.0.1",
+    "axios": "1.4.0",
+    "content-type": "1.0.5",
+    "dayjs": "1.11.7",
+    "dotenv": "16.0.3",
+    "express": "4.18.2",
+    "express-async-handler": "1.2.0",
+    "helmet": "7.0.0",
+    "iconv-lite": "0.6.3",
+    "lodash": "4.17.21",
+    "mongodb": "5.5.0",
+    "node-emoji": "1.11.0",
+    "pino": "8.14.1",
+    "pino-http": "8.3.3",
+    "rss-parser": "3.13.0",
+    "source-map-support": "0.5.21",
+    "telegraf": "4.12.2",
+    "tslib": "2.5.0"
   },
   "devDependencies": {
-    "@byndyusoft/eslint-config": "2.2.1",
-    "@byndyusoft/tsconfig": "1.2.0",
-    "@commitlint/cli": "17.3.0",
-    "@commitlint/config-conventional": "17.3.0",
-    "@types/jest": "29.2.4",
-    "@types/node": "14.18.36",
-    "eslint": "8.30.0",
-    "husky": "8.0.2",
-    "jest": "29.3.1",
-    "jest-extended": "3.2.0",
-    "lint-staged": "13.1.0",
-    "markdownlint-cli": "0.32.2",
-    "pinst": "3.0.0",
-    "prettier": "2.8.1",
-    "prettier-plugin-packagejson": "2.3.0",
-    "semantic-release": "19.0.5",
+    "@byndyusoft/eslint-config": "2.3.0",
+    "@byndyusoft/tsconfig": "2.0.0-rc.1",
+    "@commitlint/cli": "17.6.3",
+    "@commitlint/config-conventional": "17.6.3",
+    "@types/content-type": "1.1.5",
+    "@types/express": "4.17.17",
+    "@types/lodash": "4.14.194",
+    "@types/node": "18.16.8",
+    "@types/node-emoji": "1.8.2",
+    "@types/source-map-support": "0.5.6",
+    "eslint": "8.37.0",
+    "husky": "8.0.3",
+    "lint-staged": "13.2.2",
+    "markdownlint-cli": "0.34.0",
+    "pino-pretty": "10.0.0",
+    "prettier": "2.8.8",
+    "prettier-plugin-packagejson": "2.4.3",
     "shx": "0.3.4",
-    "ts-jest": "29.0.3",
-    "typescript": "4.9.4"
+    "typescript": "5.0.4"
   },
-  "packageManager": "yarn@4.0.0-rc.34",
+  "packageManager": "yarn@4.0.0-rc.43",
   "engines": {
-    "node": ">=14"
-  },
-  "publishConfig": {
-    "access": "public"
+    "node": "18.16.0"
   }
 }

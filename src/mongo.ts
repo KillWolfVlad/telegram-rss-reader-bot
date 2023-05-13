@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Byndyusoft
+ * Copyright 2023 KillWolfVlad
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,4 +14,23 @@
  * limitations under the License.
  */
 
-export * from "./helloWorldService";
+import { Collection, Db, MongoClient, ServerApiVersion } from "mongodb";
+
+import { config } from "./config";
+import { IRssItem } from "./fetchRss";
+
+export const mongoClient = new MongoClient(config.databaseUrl, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
+});
+
+export const getDatabase = (): Db => {
+  return mongoClient.db(`chat${config.chatId}`);
+};
+
+export const getMessagesCollection = (): Collection<IRssItem> => {
+  return getDatabase().collection("messages");
+};
