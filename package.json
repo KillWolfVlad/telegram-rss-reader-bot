@@ -15,7 +15,7 @@
   "author": "KillWolfVlad",
   "scripts": {
     "prebuild": "shx rm -rf ./dist",
-    "build": "yarn run prebuild && yarn run build:src",
+    "build": "yarn run build:src",
     "build:src": "tsc --project ./tsconfig.build.json",
     "postinstall": "(husky install) || true",
     "lint": "yarn run lint:eslint && yarn run lint:markdown && yarn run lint:prettier",
@@ -26,8 +26,8 @@
     "lint:markdown:fix": "markdownlint --ignore-path ./.gitignore --fix \"./**/*.md\"",
     "lint:prettier": "prettier --ignore-path ./.gitignore --check \"./**/*.{ts,js,json,yaml,yml,md}\"",
     "lint:prettier:fix": "prettier --ignore-path ./.gitignore --write \"./**/*.{ts,js,json,yaml,yml,md}\"",
-    "start": "yarn node ./dist/main.js",
-    "start:dev": "yarn run build:src && yarn node -r dotenv/config ./dist/main.js"
+    "start": "node ./dist/main.js",
+    "start:dev": "yarn run build:src && node -r dotenv/config ./dist/main.js"
   },
   "dependencies": {
     "@byndyusoft/pino-logger-factory": "3.0.1",
@@ -57,7 +57,7 @@
     "@types/content-type": "1.1.5",
     "@types/express": "4.17.17",
     "@types/lodash": "4.14.194",
-    "@types/node": "18.16.8",
+    "@types/node": "16.18.30",
     "@types/node-emoji": "1.8.2",
     "@types/source-map-support": "0.5.6",
     "eslint": "8.37.0",
@@ -70,8 +70,7 @@
     "shx": "0.3.4",
     "typescript": "5.0.4"
   },
-  "packageManager": "yarn@4.0.0-rc.43",
   "engines": {
-    "node": "18.16.0"
+    "node": ">=16"
   }
 }

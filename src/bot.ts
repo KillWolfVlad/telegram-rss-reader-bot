@@ -15,6 +15,7 @@
  */
 
 import fs from "fs";
+import path from "path";
 
 import { get as getEmoji } from "node-emoji";
 import { Telegraf } from "telegraf";
@@ -24,7 +25,7 @@ import { config } from "./config";
 
 const pjson = JSON.parse(
   // eslint-disable-next-line n/no-sync
-  fs.readFileSync(process.env.npm_package_json as string, "utf8"),
+  fs.readFileSync(path.join(process.cwd(), "package.json"), "utf8"),
 ) as {
   readonly homepage: string;
 };
