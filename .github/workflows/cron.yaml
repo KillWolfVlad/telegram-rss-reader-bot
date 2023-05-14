@@ -1,0 +1,13 @@
+name: cron
+
+on:
+  schedule:
+    - cron: "*/25 * * * *" # every 25th minute
+
+jobs:
+  ##############################################################################
+  wake-up:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: curl -X POST ${{ secrets.WEBHOOK_URL }}

@@ -37,7 +37,7 @@ We recommend use[^1]:
 
 - <https://render.com> for bot hosting
 - <https://www.mongodb.com> as MongoDB provider
-- <https://cron-job.org> for triggering bot
+- GitHub Actions for triggering bot
 
 [^1]: You can use this services absolutely free without credit card
 
