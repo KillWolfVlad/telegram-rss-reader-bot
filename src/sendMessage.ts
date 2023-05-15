@@ -27,11 +27,12 @@ export const sendMessage = async (item: IRssItem): Promise<void> => {
   const messages = getMessagesCollection();
 
   const sendedMessage = await messages.findOne({
-    link: item.link,
+    publicationDate: item.publicationDate,
+    title: item.title,
   });
 
   if (sendedMessage) {
-    logger.debug("message %s already sended", item.link);
+    logger.debug("message '%s' already sended", item.title);
     return;
   }
 
@@ -47,9 +48,9 @@ export const sendMessage = async (item: IRssItem): Promise<void> => {
     disable_notification: disableNotification,
   });
 
-  logger.debug("send message %s", item.link);
+  logger.debug("send message '%s'", item.title);
 
   await messages.insertOne(item);
 
-  logger.debug("insert message into db %s", item.link);
+  logger.debug("insert message into db '%s'", item.title);
 };

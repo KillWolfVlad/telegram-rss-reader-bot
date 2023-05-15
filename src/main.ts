@@ -30,7 +30,7 @@ import { getDatabase, getMessagesCollection, mongoClient } from "./mongo";
 let server: Server;
 
 const startDatabase = async (): Promise<void> => {
-  const linkIndexName = "link_1";
+  const uniqueIndexName = "publicationDate_1_title_1";
 
   await mongoClient.connect();
 
@@ -51,16 +51,17 @@ const startDatabase = async (): Promise<void> => {
     logger.debug("create collection %s", messages.collectionName);
   }
 
-  const linkIndexExists = await messages.indexExists(linkIndexName);
+  const uniqueIndexExists = await messages.indexExists(uniqueIndexName);
 
-  if (linkIndexExists) {
-    logger.debug("index for link already exists");
+  if (uniqueIndexExists) {
+    logger.debug("unique index already exists");
   } else {
-    await messages.createIndex("link", {
-      name: linkIndexName,
+    await messages.createIndex(["publicationDate", "title"], {
+      name: uniqueIndexName,
+      unique: true,
     });
 
-    logger.debug("create index for link");
+    logger.debug("create unique index");
   }
 
   logger.info("db is ready");
