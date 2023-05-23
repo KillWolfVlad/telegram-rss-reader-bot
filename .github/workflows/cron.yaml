@@ -1,8 +1,9 @@
 name: cron
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: "*/25 * * * *" # every 25th minute
+    - cron: "*/55 * * * *" # every 55th minute
 
 jobs:
   ##############################################################################
