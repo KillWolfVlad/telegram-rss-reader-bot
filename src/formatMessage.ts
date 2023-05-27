@@ -36,7 +36,7 @@ export const formatMessage = (
   const publicationDate = dayjs
     .utc(item.publicationDate)
     .tz(config.botTimeZone)
-    .format("DD MMMM YYYY - HH:mm");
+    .format(config.dateFormatTemplate);
 
   const header = bold`${
     options.style === "warning" ? warnings : ""

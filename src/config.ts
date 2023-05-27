@@ -31,6 +31,8 @@ export const config = {
     .split(",")
     .map((x) => x.toLowerCase()),
 
+  dateFormatTemplate: process.env.DATE_FORMAT_TEMPLATE as string,
+
   doNotDisturbUntil: Number(process.env.DO_NOT_DISTURB_UNTIL as string),
 
   doNotDisturbAfter: Number(process.env.DO_NOT_DISTURB_AFTER as string),
