@@ -36,11 +36,20 @@ export const sendMessage = async (item: IRssItem): Promise<void> => {
     return;
   }
 
-  const message = formatMessage(item);
+  const lowerCaseTitle = item.title.toLowerCase();
+
+  const isWarningMessage = config.warningKeywords.some((x) =>
+    lowerCaseTitle.includes(x),
+  );
+
+  const message = formatMessage(item, {
+    style: isWarningMessage ? "warning" : "normal",
+  });
 
   const currentHour = dayjs().tz(config.botTimeZone).hour();
 
   const disableNotification =
+    !isWarningMessage ||
     currentHour < config.doNotDisturbUntil ||
     currentHour >= config.doNotDisturbAfter;
 

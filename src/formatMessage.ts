@@ -25,21 +25,22 @@ const warnings = `${Array.from({ length: 3 })
   .map(() => getEmoji("warning"))
   .join("")}\n\n`;
 
-export const formatMessage = (item: IRssItem): FmtString => {
+export interface IFormatMessageOptions {
+  readonly style: "normal" | "warning";
+}
+
+export const formatMessage = (
+  item: IRssItem,
+  options: IFormatMessageOptions,
+): FmtString => {
   const publicationDate = dayjs
     .utc(item.publicationDate)
     .tz(config.botTimeZone)
     .format("DD MMMM YYYY - HH:mm");
 
-  const lowerCaseTitle = item.title.toLowerCase();
-
-  const hasWarnings = config.warningKeywords.some((x) =>
-    lowerCaseTitle.includes(x),
-  );
-
-  const header = bold`${hasWarnings ? warnings : ""}${publicationDate}\n${
-    item.title
-  }`;
+  const header = bold`${
+    options.style === "warning" ? warnings : ""
+  }${publicationDate}\n${item.title}`;
 
   const footer = fmt`${item.link}`;
 
