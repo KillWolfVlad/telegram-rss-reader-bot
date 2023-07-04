@@ -43,13 +43,28 @@ app.post(
       return;
     }
 
+    let hasErrors = false;
     const items = await fetchRss();
 
     for (const item of items) {
-      await sendMessage(item);
+      try {
+        await sendMessage(item);
+      } catch (error) {
+        request.log.error(error);
+        hasErrors = true;
+      }
     }
 
-    response.sendStatus(204).end();
+    if (hasErrors) {
+      response.status(500).json({
+        code: "HAS_ERRORS",
+        message: "has errors while sending messages",
+      });
+    } else {
+      response.status(204);
+    }
+
+    response.send();
   }),
 );
 
