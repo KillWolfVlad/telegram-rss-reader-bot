@@ -25,7 +25,9 @@ import { config } from "./config";
 
 export const logger = new PinoLoggerFactory().create(
   new PinoLoggerOptionsBuilder()
-    .withPrettyPrint(true)
+    .withBase({
+      gitCommit: process.env.RENDER_GIT_COMMIT,
+    })
     .withLevel(config.logger.level)
     .withPrettyPrint(config.logger.pretty)
     .build(),
