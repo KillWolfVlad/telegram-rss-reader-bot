@@ -25,6 +25,14 @@ const warnings = `${Array.from({ length: 3 })
   .map(() => getEmoji("warning"))
   .join("")}\n\n`;
 
+const trimContent = (content: string): string => {
+  const maxContentLength = 3_000;
+
+  return content.length > maxContentLength
+    ? `${content.slice(0, maxContentLength)}...`
+    : content;
+};
+
 export interface IFormatMessageOptions {
   readonly style: "normal" | "warning";
 }
@@ -42,7 +50,9 @@ export const formatMessage = (
     options.style === "warning" ? warnings : ""
   }${publicationDate}\n${item.title}`;
 
+  const content = trimContent(item.content);
+
   const footer = fmt`${item.link}`;
 
-  return fmt`${header}\n\n${item.content}\n\n${footer}`;
+  return fmt`${header}\n\n${content}\n\n${footer}`;
 };
