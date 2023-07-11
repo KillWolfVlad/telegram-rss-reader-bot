@@ -454,6 +454,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sindresorhus/is@npm:^3.1.2":
+  version: 3.1.2
+  resolution: "@sindresorhus/is@npm:3.1.2"
+  checksum: a1f82edfc39e48e6c0cee7703c087c95c6ea7e2331cf7f085821b1d3155c16fd5f87a3007557613a9130cd05f1d36cef83f298d967b070d3cb599140832eaaf2
+  languageName: node
+  linkType: hard
+
 "@testing-library/dom@npm:^8.11.1":
   version: 8.20.0
   resolution: "@testing-library/dom@npm:8.20.0"
@@ -1369,6 +1376,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"char-regex@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "char-regex@npm:1.0.2"
+  checksum: 614ffe9ff30e6bd3ab141731f3f5573f971a967cd4ef9b0590f874fd7ce43f10d3c46bc3a825a484908070452c307cb73b4860f90e30df08aaa6c89703e0c4c0
+  languageName: node
+  linkType: hard
+
 "ci-info@npm:^3.3.0":
   version: 3.8.0
   resolution: "ci-info@npm:3.8.0"
@@ -1884,6 +1898,13 @@ __metadata:
   version: 9.2.2
   resolution: "emoji-regex@npm:9.2.2"
   checksum: ef0642d76f5116a04296a85ec167696b91ca8a1373d3cd13ec3acfb0f6a77d4d1c6ce94192ab31f8bad5ca69fbd01b556638fdf389128fea48fb5f6c2c754b45
+  languageName: node
+  linkType: hard
+
+"emojilib@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "emojilib@npm:2.4.0"
+  checksum: 5937185343409402811e81a93fbe177630432db84e51f28b8114c5a99c370e1a95448e7c1585277d29793682daebbb16c1097c2b1882162db1b20ab7dfb76751
   languageName: node
   linkType: hard
 
@@ -4373,12 +4394,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-emoji@npm:1.11.0":
-  version: 1.11.0
-  resolution: "node-emoji@npm:1.11.0"
+"node-emoji@npm:2.1.0":
+  version: 2.1.0
+  resolution: "node-emoji@npm:2.1.0"
   dependencies:
-    lodash: "npm:^4.17.21"
-  checksum: d94fcc48d9c3dc1f2512bf525f5c614d0b88c9c711c7d116f06ec8adc6d25082959c1c6a37fe9ae431ba4018018ca13bed256f94e61c347e4618b1276b841d3c
+    "@sindresorhus/is": "npm:^3.1.2"
+    char-regex: "npm:^1.0.2"
+    emojilib: "npm:^2.4.0"
+    skin-tone: "npm:^2.0.0"
+  checksum: 1ea8bd8c663543c4500969705cddd59f1ec1b828e14d9a7a77373bf25993be7c5a6d23afebda4ac46e293f47d93b971ef062d1f6848a21e0644318cca9f0e64d
   languageName: node
   linkType: hard
 
@@ -5570,6 +5594,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"skin-tone@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "skin-tone@npm:2.0.0"
+  dependencies:
+    unicode-emoji-modifier-base: "npm:^1.0.0"
+  checksum: 791a2a44fd950168751098477f3f39ac3375c63f67ce5da40a718e1450b125fbe83e0b7f15e3f8d7e9decd32d4e4bbf83542586409104f95b71d828d799ded54
+  languageName: node
+  linkType: hard
+
 "slash@npm:^3.0.0":
   version: 3.0.0
   resolution: "slash@npm:3.0.0"
@@ -5988,7 +6021,7 @@ __metadata:
     lodash: "npm:4.17.21"
     markdownlint-cli: "npm:0.34.0"
     mongodb: "npm:5.5.0"
-    node-emoji: "npm:1.11.0"
+    node-emoji: "npm:2.1.0"
     pino: "npm:8.14.1"
     pino-http: "npm:8.3.3"
     pino-pretty: "npm:10.0.0"
@@ -6271,6 +6304,13 @@ __metadata:
     has-symbols: "npm:^1.0.3"
     which-boxed-primitive: "npm:^1.0.2"
   checksum: de21ca5e49bb56d46c7d3672d3d2900b3859ee9541903993bca02a94a317ec1c720b316f025bf5c0f51f7ff9ad383782970acae0408b900ae0537727f614c4e1
+  languageName: node
+  linkType: hard
+
+"unicode-emoji-modifier-base@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "unicode-emoji-modifier-base@npm:1.0.0"
+  checksum: ea34ef61018f9abb0af2effda4556ce1904d9cbe76726a27604ef02060d94c53ada7bad0165648b4e6b2cef03a51a97c0150b7225d48bdaa37c69013e43cd50b
   languageName: node
   linkType: hard
 
