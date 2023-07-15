@@ -35,7 +35,7 @@ GET /_healthz
 
 We recommend use[^1]:
 
-- <https://render.com> for bot hosting
+- <https://adaptable.io> for bot hosting
 - <https://www.mongodb.com> as MongoDB provider
 - GitHub Actions for triggering bot
 

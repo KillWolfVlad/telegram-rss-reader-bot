@@ -26,8 +26,8 @@
     "lint:markdown:fix": "markdownlint --ignore-path ./.gitignore --fix \"./**/*.md\"",
     "lint:prettier": "prettier --ignore-path ./.gitignore --check \"./**/*.{ts,js,json,yaml,yml,md}\"",
     "lint:prettier:fix": "prettier --ignore-path ./.gitignore --write \"./**/*.{ts,js,json,yaml,yml,md}\"",
-    "start": "yarn run build:src && yarn node -r dotenv/config ./dist/main.js",
-    "start:prod": "yarn node ./dist/main.js"
+    "start": "yarn node ./dist/main.js",
+    "start:dev": "yarn run build:src && yarn node -r dotenv/config ./dist/main.js"
   },
   "dependencies": {
     "@byndyusoft/pino-logger-factory": "3.0.1",
